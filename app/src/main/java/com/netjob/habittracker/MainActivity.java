@@ -18,9 +18,9 @@ import com.netjob.habittracker.data.HabitDbHelper;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button addButton;
-    public HabitDbHelper helper;
-    TextView dataTextView;
+    Button mAddButton;
+    HabitDbHelper mHelper;
+    TextView mDataTextView;
 
 
     @Override
@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataTextView = (TextView) findViewById(R.id.textView_data);
-        addButton = (Button) findViewById(R.id.button_add);
-        helper = new HabitDbHelper(this);
+        mDataTextView = (TextView) findViewById(R.id.textView_data);
+        mAddButton = (Button) findViewById(R.id.button_add);
+        mHelper = new HabitDbHelper(this);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addDummyData();
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addDummyData() {
 
-        SQLiteDatabase db = helper.getWritableDatabase();
+        SQLiteDatabase db = mHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(HabitEntry.COLUMN_NAME_MILES, 5);
         values.put(HabitEntry.COLUMN_NAME_RAN, HabitEntry.RAN_DEFAULT);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void displayDatabaseContent() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        SQLiteDatabase database = helper.getReadableDatabase();
+        SQLiteDatabase database = mHelper.getReadableDatabase();
 
         String[] projection = {
                 HabitEntry.COLUMN_NAME_RAN,
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         cursor.close();
 
-        dataTextView.setText(stringBuilder.toString());
+        mDataTextView.setText(stringBuilder.toString());
 
     }
 

@@ -14,25 +14,25 @@ import com.netjob.habittracker.data.HabitDbHelper;
 
 public class DataEditor extends AppCompatActivity {
 
-    HabitDbHelper habitDbHelper;
-    CheckBox ranCheckBox;
-    EditText milesEditText;
-    EditText pushupsEditText;
-    EditText cupsofwaterEditText;
-    EditText symptomEditText;
+    HabitDbHelper mHelper;
+    CheckBox mRanCheckBox;
+    EditText mMilesEditText;
+    EditText mPushupEditText;
+    EditText mCupsOfWaterEditText;
+    EditText mSymptomEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_editor);
 
-        ranCheckBox = (CheckBox) findViewById(R.id.checkBox_ran_question);
-        milesEditText = (EditText) findViewById(R.id.editText_miles);
-        pushupsEditText = (EditText) findViewById(R.id.editText_pushups);
-        cupsofwaterEditText = (EditText) findViewById(R.id.editText_watercups);
-        symptomEditText = (EditText) findViewById(R.id.editText_symptoms);
+        mRanCheckBox = (CheckBox) findViewById(R.id.checkBox_ran_question);
+        mMilesEditText = (EditText) findViewById(R.id.editText_miles);
+        mPushupEditText = (EditText) findViewById(R.id.editText_pushups);
+        mCupsOfWaterEditText = (EditText) findViewById(R.id.editText_watercups);
+        mSymptomEditText = (EditText) findViewById(R.id.editText_symptoms);
 
-        habitDbHelper = new HabitDbHelper(this);
+        mHelper = new HabitDbHelper(this);
 
     }
 
@@ -54,32 +54,32 @@ public class DataEditor extends AppCompatActivity {
 
     private void addHabit() {
 
-        SQLiteDatabase database = habitDbHelper.getWritableDatabase();
+        SQLiteDatabase database = mHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        if (cupsofwaterEditText.getText().length() < 1) {
-            cupsofwaterEditText.setText(String.valueOf(HabitEntry.WATERCUPS_DEFAULT));
+        if (mCupsOfWaterEditText.getText().length() < 1) {
+            mCupsOfWaterEditText.setText(String.valueOf(HabitEntry.WATERCUPS_DEFAULT));
         }
 
-        if (milesEditText.getText().length() < 1) {
-            milesEditText.setText(String.valueOf(HabitEntry.MILES_DEFAULT));
+        if (mMilesEditText.getText().length() < 1) {
+            mMilesEditText.setText(String.valueOf(HabitEntry.MILES_DEFAULT));
         }
 
-        if (pushupsEditText.getText().length() < 1) {
-            pushupsEditText.setText(String.valueOf(HabitEntry.PUSHUPS_DEFAULT));
+        if (mPushupEditText.getText().length() < 1) {
+            mPushupEditText.setText(String.valueOf(HabitEntry.PUSHUPS_DEFAULT));
         }
 
-        if (symptomEditText.getText().length() < 1) {
-            symptomEditText.setText(HabitEntry.SYMPTOMS_DEFAULT);
+        if (mSymptomEditText.getText().length() < 1) {
+            mSymptomEditText.setText(HabitEntry.SYMPTOMS_DEFAULT);
         }
 
 
-        int ran = (ranCheckBox.isChecked() ?
+        int ran = (mRanCheckBox.isChecked() ?
                 HabitEntry.RAN_EQUALS_YES : HabitEntry.RAN_EQUALS_NO);
-        double miles = Double.parseDouble(milesEditText.getText().toString());
-        int pushups = Integer.parseInt(pushupsEditText.getText().toString());
-        int water = Integer.parseInt(cupsofwaterEditText.getText().toString());
-        String symptom = symptomEditText.getText().toString();
+        double miles = Double.parseDouble(mMilesEditText.getText().toString());
+        int pushups = Integer.parseInt(mPushupEditText.getText().toString());
+        int water = Integer.parseInt(mCupsOfWaterEditText.getText().toString());
+        String symptom = mSymptomEditText.getText().toString();
 
         values.put(HabitEntry.COLUMN_NAME_WATERCUPS, water);
         values.put(HabitEntry.COLUMN_NAME_SYMPTOMS, symptom);
