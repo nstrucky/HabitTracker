@@ -20,7 +20,7 @@
             android:id="@+id/textView_exercise_group"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Exercise" />
+            android:text="@string/exercise" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,14 +32,14 @@
                 android:id="@+id/checkBox_ran_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ran?" />
+                android:text="@string/ran_question" />
 
             <EditText
                 android:id="@+id/editText_miles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Miles"
+                android:hint="@string/miles"
                 android:inputType="numberDecimal" />
 
             <EditText
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Pushups"
+                android:hint="@string/pushups"
                 android:inputType="number" />
         </LinearLayout>
     </LinearLayout>
@@ -61,7 +61,7 @@
             android:id="@+id/textView_other_group"
             android:layout_width="86dp"
             android:layout_height="wrap_content"
-            android:text="Other" />
+            android:text="@string/other" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Cups of water"
+                android:hint="@string/cups_of_water"
                 android:inputType="number" />
 
             <EditText
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Symptoms"
+                android:hint="@string/symptom"
                 android:inputType="text" />
         </LinearLayout>
     </LinearLayout>

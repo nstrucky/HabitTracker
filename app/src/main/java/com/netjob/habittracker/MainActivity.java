@@ -35,25 +35,30 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DataEditor.class);
-                startActivity(intent);
+                addDummyData();
+                displayDatabaseContent();
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_data_editor, menu);
 
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        addDummyData();
+    protected void onStart() {
         displayDatabaseContent();
+        super.onStart();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(getApplicationContext(), DataEditor.class);
+        startActivity(intent);
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -102,14 +107,14 @@ public class MainActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
 
             String ran = (cursor.getInt(ranIndex) == 1 ?
-                            getString(R.string.yes) : getString(R.string.no));
-            int miles = cursor.getInt(milesColIndex);
+                    getString(R.string.yes) : getString(R.string.no));
+            double miles = cursor.getDouble(milesColIndex);
             int pushups = cursor.getInt(pushupsColIndex);
             int watercups = cursor.getInt(watercupsColIndex);
             String symptom = cursor.getString(symptomsColIndex);
 
 
-            stringBuilder.append(String.format("%s - %d - %d - %d - %s%n",
+            stringBuilder.append(String.format("%s - %.2f - %d - %d - %s%n",
                     ran,
                     miles,
                     pushups,
@@ -118,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-               dataTextView.setText(stringBuilder.toString());
+        cursor.close();
+
+        dataTextView.setText(stringBuilder.toString());
 
     }
 

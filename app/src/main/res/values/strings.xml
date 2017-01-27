@@ -2,8 +2,15 @@
     <string name="app_name">HabitTracker</string>
 
 
-    <string name="add">Add</string>
+    <string name="add">Add dummy data</string>
     <string name="no">no</string>
     <string name="yes">yes</string>
+    <string name="exercise">Exercise</string>
+    <string name="ran_question">Ran?</string>
+    <string name="miles">Miles</string>
+    <string name="pushups">Pushups</string>
+    <string name="other">Other</string>
+    <string name="cups_of_water">Cups of Water</string>
+    <string name="symptom">Symptom</string>
 
 </resources>

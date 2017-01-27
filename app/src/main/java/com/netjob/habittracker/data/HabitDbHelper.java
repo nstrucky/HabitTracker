@@ -18,7 +18,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
             HabitEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             HabitEntry.COLUMN_NAME_RAN + " INTEGER NOT NULL DEFAULT " +
             HabitEntry.RAN_DEFAULT + ", " +
-            HabitEntry.COLUMN_NAME_MILES + " INTEGER NOT NULL DEFAULT " +
+            HabitEntry.COLUMN_NAME_MILES + " REAL NOT NULL DEFAULT " +
             HabitEntry.MILES_DEFAULT + ", " +
             HabitEntry.COLUMN_NAME_PUSHUPS + " INTEGER NOT NULL DEFAULT " +
             HabitEntry.PUSHUPS_DEFAULT + ", " +
@@ -26,7 +26,6 @@ public class HabitDbHelper extends SQLiteOpenHelper {
             HabitEntry.WATERCUPS_DEFAULT + ", " +
             HabitEntry.COLUMN_NAME_SYMPTOMS + " TEXT NOT NULL DEFAULT" +
             " \'" + HabitEntry.SYMPTOMS_DEFAULT + "\')";
-
 
 
     public HabitDbHelper(Context context) {
