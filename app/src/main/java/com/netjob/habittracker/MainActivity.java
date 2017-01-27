@@ -77,10 +77,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private Cursor read(String[] projection) {
+
+        SQLiteDatabase database = mHelper.getReadableDatabase();
+        Cursor cursor = database.query(
+                HabitEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+    }
+
     private void displayDatabaseContent() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        SQLiteDatabase database = mHelper.getReadableDatabase();
 
         String[] projection = {
                 HabitEntry.COLUMN_NAME_RAN,
@@ -91,12 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         };
 
-        Cursor cursor = database.query(HabitEntry.TABLE_NAME, projection,
-                null,
-                null,
-                null,
-                null,
-                null);
+        Cursor cursor = read(projection);
 
         int ranIndex = cursor.getColumnIndex(HabitEntry.COLUMN_NAME_RAN);
         int milesColIndex = cursor.getColumnIndex(HabitEntry.COLUMN_NAME_MILES);
