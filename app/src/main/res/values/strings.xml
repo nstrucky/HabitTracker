@@ -3,5 +3,7 @@
 
 
     <string name="add">Add</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
 
 </resources>
